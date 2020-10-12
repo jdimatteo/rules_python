@@ -32,6 +32,7 @@ py_binary(
     srcs = ["main.py"],
     deps = [
         requirement("boto3"),
+        requirement("six"),
     ],
 )
 
