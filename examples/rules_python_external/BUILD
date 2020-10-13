@@ -1,5 +1,6 @@
 load("@pip//:requirements.bzl", "requirement")
 load("@rules_python//python:defs.bzl", "py_binary", "py_test")
+load("@rules_proto//proto:defs.bzl", "proto_library")
 
 # Toolchain setup, this is optional.
 # Demonstrate that we can use the same python interpreter for the toolchain and executing pip in pip install (see WORKSPACE).
@@ -40,4 +41,9 @@ py_test(
     name = "test",
     srcs = ["test.py"],
     deps = [":main"],
+)
+
+proto_library(
+    name = "sample_proto",
+    srcs = ["sample.proto"],
 )
