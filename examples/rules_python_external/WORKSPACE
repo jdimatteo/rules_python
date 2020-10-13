@@ -21,3 +21,16 @@ http_archive(
     url = "https://github.com/bazelbuild/rules_python/releases/download/0.0.3/rules_python-0.0.3.tar.gz",
     sha256 = "e46612e9bb0dae8745de6a0643be69e8665a03f63163ac6610c210e80d14c3e4",
 )
+
+# Add six archive, as suggested at https://github.com/protocolbuffers/protobuf/issues/3677#issuecomment-331961351
+# and https://github.com/protocolbuffers/protobuf/blob/c627530946e5d8783c1d9c2bbeb1704e4e868963/WORKSPACE#L32
+http_archive(
+    name = "six_archive",
+    build_file = "six.BUILD",
+    sha256 = "105f8d68616f8248e24bf0e9372ef04d3cc10104f1980f54d57b2ce73a5ad56a",
+    url = "https://pypi.python.org/packages/source/s/six/six-1.10.0.tar.gz#md5=34eed507548117b2ab523ab14b2f8b55",
+)
+bind(
+    name = "six",
+    actual = "@six_archive//:six",
+)
